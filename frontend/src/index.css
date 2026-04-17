@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-ink: #0f172a;
+    --brand-surface: #f7fafc;
+    --brand-primary: #0f766e;
+    --brand-primary-deep: #0b5e58;
+    --brand-secondary: #c2410c;
+    --brand-ring: #14b8a6;
+  }
+
+  html {
+    font-family: 'Manrope', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply text-gray-900;
+    background: radial-gradient(circle at 0% 0%, #dff4ef 0%, #f7fafc 45%, #fff5ef 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500;
+  }
+  
+  .btn-success {
+    @apply bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
+  }
+  
+  .btn-danger {
+    @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+  }
+  
+  .btn-warning {
+    @apply bg-yellow-600 text-white hover:bg-yellow-700 focus:ring-yellow-500;
+  }
+  
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6;
+  }
+
+  .auth-shell {
+    @apply min-h-screen py-8 px-4 sm:px-6 lg:px-8;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .auth-shell::before {
+    content: '';
+    position: absolute;
+    width: 28rem;
+    height: 28rem;
+    right: -6rem;
+    top: -8rem;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(15, 118, 110, 0.22), rgba(15, 118, 110, 0));
+    pointer-events: none;
+  }
+
+  .auth-shell::after {
+    content: '';
+    position: absolute;
+    width: 24rem;
+    height: 24rem;
+    left: -8rem;
+    bottom: -6rem;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(194, 65, 12, 0.2), rgba(194, 65, 12, 0));
+    pointer-events: none;
+  }
+
+  .auth-grid {
+    @apply relative z-10 mx-auto grid max-w-6xl gap-8 lg:grid-cols-2;
+  }
+
+  .auth-brand {
+    @apply hidden lg:flex flex-col justify-between rounded-3xl p-8 text-white shadow-2xl;
+    background: linear-gradient(145deg, #115e59 0%, #0f766e 55%, #0e7490 100%);
+    animation: fadeIn 0.7s ease-out;
+  }
+
+  .auth-brand-title {
+    font-family: 'Sora', system-ui, sans-serif;
+    @apply text-3xl font-bold leading-tight;
+  }
+
+  .auth-brand-copy {
+    @apply mt-4 text-teal-50/95 text-base leading-relaxed;
+  }
+
+  .auth-brand-points {
+    @apply mt-8 space-y-3 text-sm text-teal-50;
+  }
+
+  .auth-card {
+    @apply rounded-3xl bg-white/95 p-6 shadow-xl ring-1 ring-slate-100 backdrop-blur-sm sm:p-8;
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .auth-heading {
+    font-family: 'Sora', system-ui, sans-serif;
+    @apply text-3xl font-bold text-slate-900;
+  }
+
+  .auth-subheading {
+    @apply mt-2 text-sm text-slate-600;
+  }
+
+  .auth-input {
+    @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm transition-all duration-200 placeholder:text-slate-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20;
+  }
+
+  .auth-label {
+    @apply mb-2 block text-sm font-semibold text-slate-700;
+  }
+
+  .auth-button {
+    @apply flex w-full items-center justify-center rounded-xl bg-teal-700 px-4 py-3 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .auth-link {
+    @apply font-semibold text-teal-700 transition-colors hover:text-teal-800;
+  }
+
+  .auth-icon-wrap {
+    @apply flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-100 text-teal-700;
+  }
+  
+  .card-header {
+    @apply border-b border-gray-200 pb-4 mb-4;
+  }
+  
+  .status-badge {
+    @apply px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .status-pending {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+  
+  .status-approved {
+    @apply bg-green-100 text-green-800;
+  }
+  
+  .status-rejected {
+    @apply bg-red-100 text-red-800;
+  }
+  
+  .status-expired {
+    @apply bg-gray-100 text-gray-800;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #0f766e;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* File upload area */
+.file-upload-area {
+  @apply border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors duration-200 cursor-pointer;
+}
+
+.file-upload-area.dragover {
+  @apply border-blue-500 bg-blue-50;
+}
+
+/* Responsive table */
+.table-responsive {
+  @apply overflow-x-auto;
+}
+
+.table {
+  @apply min-w-full divide-y divide-gray-200;
+}
+
+.table th {
+  @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider bg-gray-50;
+}
+
+.table td {
+  @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
+}
+
+/* Navigation */
+.nav-link {
+  @apply px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200;
+}
+
+.nav-link-active {
+  @apply bg-blue-100 text-blue-700;
+}
+
+.nav-link-inactive {
+  @apply text-gray-600 hover:text-gray-900 hover:bg-gray-100;
+}
